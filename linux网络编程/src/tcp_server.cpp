@@ -65,6 +65,10 @@ void Server::mySelect() {
 	close(srv_fd);
 }
 
+/********************************************
+*epoll 水平触发模式，只要fd对应的缓冲区内有数据，*
+*epoll_wait就会返回，这是epoll默认的工作模式    *
+*********************************************/
 void Server::myEpoll() {
 	int epfd = epoll_create(1024);
 	if(epfd == -1) {
